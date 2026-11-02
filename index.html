@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090d18">
+<title>Daniel.Mail — Temporary Inbox</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="shell">
+  <header class="top">
+    <div class="brand"><div class="brand-mark"><i class="fa-solid fa-paper-plane"></i></div><div><div class="brand-name">Daniel.Mail</div><div class="brand-sub">TEMPORARY EMAIL SERVICE</div></div></div>
+    <div class="top-pill"><i class="fa-solid fa-circle"></i> SYSTEM ONLINE</div>
+  </header>
+  <section class="hero">
+    <div class="eyebrow">PRIVATE · SIMPLE · TEMPORARY</div>
+    <h1>Inbox baru.<br><span>Tanpa ribet.</span></h1>
+    <p>Buat alamat email sementara untuk menerima pesan saat mencoba layanan online. Cepat, simpel, dan langsung dari browser.</p>
+  </section>
+  <div class="grid">
+    <div class="stat"><div class="stat-icon"><i class="fa-solid fa-signal"></i></div><div><small>Status layanan</small><strong id="serviceStatus">Standby</strong></div></div>
+    <div class="stat"><div class="stat-icon"><i class="fa-solid fa-envelope"></i></div><div><small>Pesan diterima</small><strong id="messageCount">0</strong></div></div>
+  </div>
+  <section class="card" id="createCard">
+    <div class="card-head"><h2><i class="fa-solid fa-wand-magic-sparkles"></i> Buat inbox</h2><span class="tag">FREE TEMP MAIL</span></div>
+    <p style="color:var(--muted);font-size:.84rem;line-height:1.6;margin:0 0 17px">Tekan tombol di bawah untuk membuat alamat email acak yang siap menerima pesan.</p>
+    <button class="btn primary full" id="createBtn"><i class="fa-solid fa-plus"></i> Generate email baru</button>
+    <p class="note"><i class="fa-solid fa-circle-info"></i> Gunakan hanya untuk pendaftaran non-penting. Jangan gunakan untuk akun bank, akun utama, atau pemulihan password.</p>
+  </section>
+  <section class="card hidden" id="inboxCard">
+    <div class="card-head"><h2><i class="fa-solid fa-at"></i> Alamat inbox</h2><span class="tag">ACTIVE</span></div>
+    <div class="address-wrap"><span class="label">EMAIL ADDRESS</span><div class="address-row"><input id="emailAddress" class="address" readonly value=""><button class="btn cyan" id="copyBtn"><i class="fa-regular fa-copy"></i> Copy</button></div></div>
+    <div class="toolbar"><button class="btn secondary" id="refreshBtn"><i class="fa-solid fa-rotate"></i> Refresh inbox</button><button class="btn secondary" id="historyBtn"><i class="fa-solid fa-clock-rotate-left"></i> History</button><button class="btn danger" id="newEmailBtn"><i class="fa-solid fa-plus"></i> New email</button></div>
+  </section>
+  <section class="card hidden" id="messagesCard">
+    <div class="inbox-head"><div class="inbox-title"><i class="fa-solid fa-inbox"></i> Inbox messages</div><div class="sync" id="syncLabel"><i class="fa-solid fa-circle"></i> Ready</div></div>
+    <div id="messageList" class="message-list"><div class="empty"><i class="fa-regular fa-envelope-open"></i><strong>Belum ada pesan</strong><p>Pesan yang masuk ke alamat ini akan muncul di sini.</p></div></div>
+    <p class="note"><i class="fa-solid fa-arrows-rotate"></i> Inbox diperiksa otomatis setiap 20 detik.</p>
+  </section>
+  <footer class="bottom">© <span id="year"></span> <strong>Daniel.Mail</strong> · Built for the web.<br>Email infrastructure by <a href="https://mail.tm/" target="_blank" rel="noopener noreferrer">Mail.tm</a>.</footer>
+</div>
+<div class="modal" id="readModal"><div class="dialog"><div class="dialog-head"><h3>Isi pesan</h3><button class="close" data-close="readModal"><i class="fa-solid fa-xmark"></i></button></div><div class="meta"><div><b>From:</b> <span id="detailFrom">-</span></div><div><b>Subject:</b> <span id="detailSubject">-</span></div><div><b>Date:</b> <span id="detailDate">-</span></div></div><div class="mail-body" id="detailBody">Memuat pesan...</div></div></div>
+<div class="modal" id="historyModal"><div class="dialog"><div class="dialog-head"><h3>Riwayat email</h3><button class="close" data-close="historyModal"><i class="fa-solid fa-xmark"></i></button></div><div class="history" id="historyList"></div></div></div>
+<div class="toast" id="toast"></div>
+<script src="js/app.js" defer></script>
+</body>
+</html>
